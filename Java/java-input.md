@@ -1,9 +1,9 @@
 
-# 자바 입력방법 비교 (Scanner, BufferedReader)
+# 📌 자바 입력방법 비교 (Scanner, BufferedReader)
 
 ## 1. Scanner
 
-### Example code
+###  ✔ Example code
    ```java
     import java.util.Scanner;
     
@@ -44,7 +44,7 @@
 
 ## 2-1. BufferedReader
 
-### Example code
+###  ✔ Example code
   
     ```java
     import java.io.BufferedReader;
@@ -77,7 +77,7 @@
 
 
 
-### 효율적인 이유?
+###  ✔ 효율적인 이유?
 - BufferedReader 클래스가 기본 입출력 스트림에 버퍼 기능을 추가한 스트림(Buffered Stream) 을 사용해 입력받기 때문이다. 이 때문에 입력된 데이터가 바로 프로그램으로 전달되지 않고 중간에 버퍼링이 된 후에 전달되며, 이는 시스템의 데이터처리의 효율성을 높여준다.
 
 
@@ -96,7 +96,7 @@
 
 ## 2-2. StringTokenizer
 
-### Example code
+###  ✔ Example code
 
   ```java
   import java.io.BufferedReader;
@@ -129,7 +129,7 @@
 
 <br>
 
-### Example Result
+###  ✔ Example Result
 
   ![result-image](../image/input-java-img1.png)
 
