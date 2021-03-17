@@ -9,31 +9,22 @@
 ### 2. Method 추가
 
 ```java
-@SuppressLint("MissingPermission")
 public String getPhoneNumber() {
-    TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
     String phoneNumber = "";
-
+    TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
     try {
-        if (telephony.getLine1Number() != null) {
-            phoneNumber = telephony.getLine1Number();
+        // permission check
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
         } else {
-            if (telephony.getSimSerialNumber() != null) {
-                phoneNumber = telephony.getSimSerialNumber();
-            }
+            checkPermissions();
         }
+        String tmpPhoneNumber = telephonyManager.getLine1Number();
+        phoneNumber = tmpPhoneNumber.replace("+82", "0");
     } catch (Exception e) {
+        phoneNumber = "error";
         e.printStackTrace();
-    }
-
-    if (phoneNumber.startsWith("+82")) {
-        phoneNumber = phoneNumber.replace("+82", "0"); // +8210xxxxyyyy 로 시작되는 번호
-    }
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        phoneNumber = PhoneNumberUtils.formatNumber(phoneNumber, Locale.getDefault().getCountry());
-    } else {
-        phoneNumber = PhoneNumberUtils.formatNumber(phoneNumber);
     }
 
     return phoneNumber;
@@ -41,7 +32,7 @@ public String getPhoneNumber() {
 ```
 
 - 함수 자체의 반환값으로는 000-0000-0000 형식의 데이터를 받아오는 것을 알 수 있음. 추가적인 포맷 변환은 코드 수정 필요.
-
+- 별도의 permission check 메소드가 필요. 
 
 ## ✨ Reference ✨
 
