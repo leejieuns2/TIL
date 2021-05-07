@@ -174,7 +174,7 @@ Glide.with(this).load("http://www.selphone.co.kr/homepage/img/team/3.jpg").into(
 
 ### ✔ 다른 라이브러리들과의 성능 비교
 
-![](../image/image-library-img1.png)
+![](../../image/image-library-img1.png)
 
 - 메모리, 속도 값은 총 6장의 이미지를 리스트뷰에 띄우는 방식으로 3회 진행하여 평균값으로 계산.
 - 반복 스크롤 부분은 50장 정도의 이미지를 리스트뷰에 띄웠고 메모리를 정리하기 직전 최대 사용량을 구한 것.
