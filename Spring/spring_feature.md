@@ -66,12 +66,6 @@
 <br>
 
 
-### Spring Framework의 단점
-
-
-<br>
-
-
 ### Spring Boot
 
 - 간단한 설정만으로 빠르게 실행 가능하도록 독립적인 Spring Application 개발을 지원하는 Spring framework의 확장 기능
@@ -80,8 +74,11 @@
 
 1. 특징
 - 내장된 Tomcat 지원
+  
 - starter dependency를 통한 단순한 build 의존성 설정
+
 - 명시적인 xml 설정이나 Java 코드 설정 제거 및 최소화
+
 - 애플리케이션의 모니터링 및 관리를 위한 actuator 기능
 
 
@@ -96,8 +93,20 @@
 
 ### Spring Boot vs Spring MVC
 
+1. Spring Boot에는 내장된 Tomcat이 존재하기 때문에 기존의 Spring MVC Project에서 따로 Tomcat을 설치한다나 매번 버전을 관리해 주어야 하는 수고로움을 덜어준다.
+
+2. Spring MVC Project에서는 각각의 dependency들의 호환되는 버전을 일일이 맞추어 주어야 했고, 
+   때문에 하나의 버전을 올리고자 하면 다른 dependency에 까지 영향을 미쳐 version 관리에 어려움이 많았다. 
+   하지만, Spring Boot에서는 starter가 대부분의 dependency를 관리해주기 때문에 편리하다.
+
+3. 2번과 비슷한 이유로 Spring Boot에서는 XML 설정을 따로 하지 않아도 된다.
+
+4. Spring Boot에서는 jar file을 이용해 자바 옵션만으로 손쉽게 배포가 가능하다.
+
+5. Spring Boot에서는 Spring Actuator를 이용한 애플리케이션의 모니터링과 관리를 제공한다.
 
 <br>
 
 
 ## ✨ Reference ✨
+[https://gmlwjd9405.github.io/2018/12/20/spring-mvc-framework.html](https://gmlwjd9405.github.io/2018/12/20/spring-mvc-framework.html)
