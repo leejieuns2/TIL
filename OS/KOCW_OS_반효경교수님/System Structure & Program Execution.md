@@ -1,4 +1,4 @@
-# Chapter 2. Introduction to Operating Systems
+# Chapter 2. System Structure & Program Execution
 
 ## 💡 컴퓨터 시스템 구조 (1)
 
@@ -174,6 +174,8 @@
   3. 커널 함수
      - 운영체제 프로그램의 함수
      - 커널 함수의 호출 = 시스템 콜
+
+<br>
 
 ### 프로그램의 실행
 
