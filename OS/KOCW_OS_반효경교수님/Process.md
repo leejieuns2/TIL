@@ -59,7 +59,7 @@
 - 운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보
 - 다음의 구성 요소를 가진다. (구조체로 유지)
 
-    <img src="../../image/PCB.png" alt="drawing" width="20" height="50"/>
+    <img src="../../image/PCB.png" alt="drawing" width="200" height="500"/>
  
     1. OS가 관리상 사용하는 정보
         - Process State, Process ID
