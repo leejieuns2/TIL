@@ -1,8 +1,6 @@
 # Chapter 3. Process
 
-## 💡 Process
-
-### 프로세스의 개념
+### 💡 프로세스의 개념
 
 - 프로세스는 실행중인 프로그램을 의미한다. (Process is a program in execution)
 - 프로세스의 문맥(context)
@@ -15,12 +13,12 @@
     - PCB (Process Control Block)
     - Kernel stack
 
-### 프로세스의 상태
+### 💡 프로세스의 상태
 
 - 프로세스는 상태가 변경되면서 수행된다.
 
 1. Running
-   - CPU를 잡고 Instructionm을 수행중인 상태
+   - CPU를 잡고 Instruction을 수행중인 상태
        
 2. Ready
    - CPU를 기다리는 상태 (메모리 등 다른 조건을 모두 만족하고)
@@ -45,7 +43,7 @@
     - 외부에서 다시 시해주어야 Active 상태로 변경됨.
         
 
-### 프로세스 상태도
+### 💡 프로세스 상태도
 
 ![](../../image/process_state_diagram.png)
 
@@ -55,11 +53,11 @@
 - Disk 또한 Disk I/O Queue에 들어있는 Process 를 Disk Controller의 지휘 아래 순차적으로 처리하게 된다.
 - Interrupt가 걸려 CPU가 OS에게 넘어가게 되면, OS는 상태 변경을 진행한다.
 
-### PCB (Process Controll Block)
+### 💡 PCB (Process Controll Block)
 - 운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보
 - 다음의 구성 요소를 가진다. (구조체로 유지)
 
-    <img src="../../image/PCB.png" alt="drawing" width="200" height="500"/>
+    <img src="../../image/PCB.png" alt="drawing" width="300" height="500"/>
  
     1. OS가 관리상 사용하는 정보
         - Process State, Process ID
@@ -75,7 +73,7 @@
         - Open file descriptors,,,
         - 그 외 리소스 관련 정보들
     
-### 문맥 교환 (Context Switch)
+### 💡 문맥 교환 (Context Switch)
 - CPU를 한 프로세스에서 다른 프로세스로 넘겨주는 과정
 - CPU가 다른 프로세스에서 넘어갈 때 운영체제는 다음을 수행
     - CPU를 내어주는 프로세스의 상태를 그 프로세스의 PCBdp wjwkd
@@ -87,7 +85,7 @@
     <2> 사용자 프로세스 A(user mode) -- timer interrupt or I/O 요청 system call --> kernel mode -- context switch 발생 --> 사용자 프로세스 B (user mode)   
     => <1>의 경우에도 CPU 수행 정보 등 context의 일부를 PCB에 save 해야 하지만, 문맥교환을 해야하는 <2>의 경우 훨씬 그 부담이 큼. (ex. cache memory flush)
 
-### 프로세스를 스케줄링하기 위한 큐
+### 💡 프로세스를 스케줄링하기 위한 큐
 1. Job Queue
     - 현재 시스템 내에 있는 모든 프로세스의 집합
     - Ready Queue, Device Queue가 모두 Job Queue 내에 포함되어 있음.
@@ -97,7 +95,7 @@
     - I/O device의 처리를 기다리는 프로세스의 집합
 - 프로세스들은 각 큐들을 오가며 수행된다.
 
-### 스케쥴러 (Scheduler)
+### 💡 스케쥴러 (Scheduler)
 1. Long-term scheduler (Job scheduler or 장기 스케쥴러)
     - 시작 프로세스 중 어떤 것들을 ready queue로 보낼 지 결정
     - 프로세스에 memory 및 각종 자원을 주는 문제를 다루는 스케쥴러
