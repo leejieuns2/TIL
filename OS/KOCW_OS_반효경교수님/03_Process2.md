@@ -7,6 +7,8 @@
 - 입출력을 요청한 프로세스가 입출력이 끝날 때까지 대기상태일 경우 동기식 입출력.
 - 입출력을 요청한 프로세스가 종료시까지 대기하지 않고 CPU가 새로운 instruction를 실행할 경우 비동기식 입출력.
 
+<br>
+
 ## 💡 Thread
 - A thread is a basic unit of CPU utilization
 - lightweight process라고도 부름
@@ -17,10 +19,14 @@
 - data, code 부분은 thread들이 공유를 하고 각각 stack부분만 thread가 고유 공간을 가지고 있음.
 - PCB에서도 Thread 각각이 독립적으로 구성하고 있는 것은 PC(Program counter), Register이며 나머지 공간은 Thread끼리 서로 공유.
 
+<br>
+
 ### 💡 Thread의 구성
 - Program Counter
 - register set   
 - stack space
+
+<br>
 
 ### 💡 Thread가 동료 Thread와 굥유하는 부분 (=task)
 - code section
@@ -29,9 +35,13 @@
     
 => 전통적인 개념의 heavyweight process는 하나의 thread를 가지고 있는 task로 볼 수 있다.
 
+<br>
+
 ### 💡 Single and Multithreaded Processes
 
 ![](../../image/single_and_multi_thread.png)
+
+<br>
 
 ### 💡 Thread의 장점
 
@@ -48,6 +58,8 @@
       : 프로세스를 creating or switching 하는 것보다 훨씬 오버헤드가 적음 (Solaris의 경우 각각 30배, 5배의 오버헤드 차이가 발생함)
 - Utilization of Multi Process Architectures   
       : 멀티 프로세서 환경에서 여러개의 쓰레드를 병렬적으로 수행할 수 있으므로 훨씬 효율적임.
+
+<br>
 
 ### 💡 Implementation of Threads
 1. Kernel Threads

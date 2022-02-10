@@ -13,6 +13,8 @@
     - PCB (Process Control Block)
     - Kernel stack
 
+<br>
+
 ### 💡 프로세스의 상태
 
 - 프로세스는 상태가 변경되면서 수행된다.
@@ -41,7 +43,9 @@
         ex) 사용자가 프로그램을 일시 정지 시킨 경우 (break key) 시스템이 여러 이유로 프로세스를 잠시 중단시킴
             (메모리에 너무 많은 프로세스가 올라와 있을 때)
     - 외부에서 다시 시해주어야 Active 상태로 변경됨.
-        
+
+
+<br>
 
 ### 💡 프로세스 상태도
 
@@ -52,6 +56,8 @@
 - CPU는 여러 프로세스가 공유하기 때문에 계속 Ready Queue에서 Process가 대기하고 있다가 점유하는 방식으로 작동함.
 - Disk 또한 Disk I/O Queue에 들어있는 Process 를 Disk Controller의 지휘 아래 순차적으로 처리하게 된다.
 - Interrupt가 걸려 CPU가 OS에게 넘어가게 되면, OS는 상태 변경을 진행한다.
+
+<br>
 
 ### 💡 PCB (Process Controll Block)
 - 운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보
@@ -72,7 +78,9 @@
     4. 파일 관련
         - Open file descriptors,,,
         - 그 외 리소스 관련 정보들
-    
+
+<br>
+
 ### 💡 문맥 교환 (Context Switch)
 - CPU를 한 프로세스에서 다른 프로세스로 넘겨주는 과정
 - CPU가 다른 프로세스에서 넘어갈 때 운영체제는 다음을 수행
@@ -85,6 +93,8 @@
     <2> 사용자 프로세스 A(user mode) -- timer interrupt or I/O 요청 system call --> kernel mode -- context switch 발생 --> 사용자 프로세스 B (user mode)   
     => <1>의 경우에도 CPU 수행 정보 등 context의 일부를 PCB에 save 해야 하지만, 문맥교환을 해야하는 <2>의 경우 훨씬 그 부담이 큼. (ex. cache memory flush)
 
+<br>
+
 ### 💡 프로세스를 스케줄링하기 위한 큐
 1. Job Queue
     - 현재 시스템 내에 있는 모든 프로세스의 집합
@@ -94,6 +104,8 @@
 3. Device Queue
     - I/O device의 처리를 기다리는 프로세스의 집합
 - 프로세스들은 각 큐들을 오가며 수행된다.
+
+<br>
 
 ### 💡 스케쥴러 (Scheduler)
 1. Long-term scheduler (Job scheduler or 장기 스케쥴러)
