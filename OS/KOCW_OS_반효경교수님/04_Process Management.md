@@ -92,9 +92,107 @@
 <br>
 
 ### 💡 `wait()` System Call
+> 자식이 종료(terminate)될 때까지 부모가 기다리는(wait = blocked) 모델
 - 프로세스 A가 wait() 시스템 콜을 호출하면
     - 커널은 child가 종료될 대까지 프로세스 A를 sleep 시킨다. (block 상태)
     - child process가 종료되면 커널은 프로세스 A를 Rodnsek. (ready 상태)
+  
+- 대표적인 예 )
+    - 리눅스에서 Program 이름을 Command Line에 치면 실행되는 형태.
+    - 종료 될 때까지 다른 프로그램 실행 불가.
+    - 쉘 프롬프트의 자식 프로세스로 실행되기 때문에 자식 프로세스가 끝나야 다시 프롬프트 라인이 보임.
+  
+  ```shell
+  main {
+    int childPID;
+    S1;
+    childPID = fork();
+    # 0이면 자식 프로세스를 위한 코드 생성
+    if(childPID == 0) {
+    } else {
+      # 부모 프로세스인 경우 wait() 실행
+      # 자식 프로세스가 종료될 때까지 기다리는 모델
+      wait();
+    }
+    S2;
+  }
+  ```
 
-## ✨ Reference ✨
-[]()
+<br>
+
+### 💡 `exit()` System Call
+- 프로세스의 종료
+  1. 자발적 종료
+     - 마지막 statement 수행 후 exit() 시스템 콜을 통해 중료 수행됨.
+     - 프로그램에 명시적으로 적어주지 않아도 main 함수가 리턴되는 위치에 컴파일러가 넣어줌.
+  2. 비자발적 종료
+     - 부모 프로세스가 자식 프로세스를 강제 종료시킴
+        - 자식 프로세스가 한계치를 넘어서는 자원 요청
+        - 자식에게 할당된 Task가 더 이상 필요하지 않음
+        - 키보드로 kill, break 등을 친 경우
+        - 부모가 종료되는 경우 (부모 프로세스가 종료되기 전에 자식들이 먼저 종료되어야 하므로)
+  
+<br>
+
+## < 요약 >
+### 💡 프로세스와 관련된 시스템 콜
+1. fork()
+   - Create a child (copy)
+   - 부모 프로세스에서 복제하여 자식 프로세스 생성
+2. exec()
+   - overlay new image
+   - 새로운 프로그램으로 덮어씌우는 시스템 콜
+3. wait()
+   - sleep until child is done
+   - 자식 프로세스가 종료될 때까지 대기
+4. exit()
+   - frees all the resources, notify parent
+   - 모든 자원을 반납하고 부모 프로세스에게 종료되었다고 알림.
+
+<br>
+
+### 💡 프로세스 간 협력
+1. 독립적 프로세스 (Independent Process)
+   - 프로세스는 각자의 주소 공간을 가지고 수행되므로 원칙적으로 하나의 프로세스는 다른 프로세스의 수행에 영향을 미치지 못함.
+   - 경우에 따라서는 프로세스가 협력을 해야만 서로 효율적으로 실행되기도 함.
+
+2. 협력 프로세스 (Cooperating Process)
+   - 프로세스 협력 메커니즘을 통해 하나의 프로세스가 다른 프로세스의 수행에 영향을 미칠 수 있음
+
+3. 프로세스 간 협력 메커니즘 (IPC : Interprocess Communication)
+   1. 메세지를 전달하는 방법
+      - Message passing
+        - 커널을 통해 메시지 전달.
+        - 프로세스 A가 프로세스 B에게 메세지를 전달함으로써 프로세스 B가 작업을 수행하는 것. 중간 커널이 메신저 역할을 해줌.
+   2. 주소 공간을 공유하는 방법
+      - shared memory
+        - 서로 다른 프로세스 간에도 일부 주소 공간을 공유하게 하는 shared memory 메커니즘이 있음.
+  
+    > Thread
+   - Thread는 사실상 하나의 프로세스이므로 프로세스간 협력으로 보기는 어렵지만 동일한 process를 구성하는 thread들 간에는 주소 공간을 공유하므로 협력이 가능.
+
+<br>
+
+### 💡 Message Passing
+- Message System
+  - 프로세스 사이에 공유 변수 (Shared variable)를 일체 사용하지 않고 통신하는 시스템
+  - Communication 방법에 관계 없이 운영체제 커널이 메세지를 전달하는 통신을 진행.
+  
+- Direct Communication
+  - 통신하려는 프로세스의 이름을 명시적으로 표시
+  ### Process P [Send Q.message]  -----------> Process Q [Receive P.message]
+  
+- Indirect Communication
+  - mailbox(or port)를 통해 메세지를 간접 전달
+  - mailbox 역시 커널 안에 존재하는 것.
+  ### Process P [Send M.message]  ------ Mailbox M -----> Process Q [Receive M.message]
+
+<br>
+
+### 💡 Interprocess Communication
+
+![](../../image/interprocess_communication.png)
+
+- 각각 주소공간이 따로 있지만, 일부의 shared 공간을 같이 사용하는 형태
+- kernel에 명령을 보내 shared 공간을 쓴다는 것을 알려야 사용 가능함.
+
