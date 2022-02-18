@@ -6,5 +6,5 @@ while
 	[ ${i} -eq 0 ];
 do
 	echo "process is running...."
-	sleep 1000
+	sleep 10
 done
