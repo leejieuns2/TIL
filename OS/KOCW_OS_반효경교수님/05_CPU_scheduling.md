@@ -67,7 +67,7 @@
     - CPU가 놀지 않고 일한 시간의 비율
     
 2. Throughput (처리량)
-    - # of processes that complete their execution per time unit
+    - \# of processes that complete their execution per time unit
     - 주어진 시간 동안 몇개의 작업을 처리했는지에 대한 비율
     
 3. Turnaround Time (소요 시간, 평균 시간)
@@ -203,7 +203,7 @@
     - CPU가 여러 개인 경우 스케쥴링은 더욱 복잡해진다.
     - Homogeneous processor인 경우
         - Queue에 한줄로 세워서 각 프로세스가 알아서 꺼내가게 할 수 있다.
-        - 반드시 특정 프로세서에서 수행되어야 하는 프로세스가 있는 경우에는 문제가 더 복잡해진다.
+        - 반드시 특정 프로세서에서 수행되어야 하는 프로세스가 있는 경우에는 문제가 더 복잡해진다.   
           ( 보통 우선순위를 부여해 특정 프로세서에 수행되도록 처리함. )
     - Load Sharing
         - 일부 프로세서에 job이 몰리지 않도록 부하를 적절히 공유하는 메커니즘 필요
