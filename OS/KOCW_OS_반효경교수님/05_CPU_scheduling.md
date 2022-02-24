@@ -62,6 +62,7 @@
 
 ### 💡 Scheduling Criteria - Performance Index(스케쥴링 성능 척도)
 
+< 시스템 입장에서의 성능 척도 >
 1. CPU Utilization (이용률)
     - Keep the CPU as busy as possible
     - CPU가 놀지 않고 일한 시간의 비율
@@ -70,7 +71,8 @@
     - \# of processes that complete their execution per time unit
     - 주어진 시간 동안 몇개의 작업을 처리했는지에 대한 비율
     
-3. Turnaround Time (소요 시간, 평균 시간)
+< 프로그램 입장에서의 성능 척도 >
+3. Turnaround Time (소요 시간, 평균 시간) = 총 처리 시간
     - amount of time to execute a particular process
     - CPU를 쓰기 시작해서 I/O 처리를 위해 종료할 때까지 (뺏길 때까지) 걸린 시간 (CPU burst time)
 
@@ -78,8 +80,9 @@
     - amount of time a process has been waiting in the ready queue
     - CPU를 쓰기까지의 순서를 기다리는 시간
     - waiting time은 여러 차례 발생하는 대기 시간을 합친 시간을 의미함 (response time과 조금 다름)
+    - 스케쥴링 알고리즘은 단지 프로세스가 준비 큐에서 대기하는 시간의 양에만 영향을 줌.
     
-5. Response time (응답 시간)
+5. Response time (응답 시간)  ====> 가장 중요한 성능 척도
     - amount of time it takes from when a request was submitted until the first response is produced, not output
     - 처음으로 CPU를 점유하기까지 걸린 시간
     - for time-sharing environment
