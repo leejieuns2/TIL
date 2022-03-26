@@ -217,23 +217,36 @@
 
 <br>
 
+### 💡 Example of Segments
+
+![example_of_segmentation.png](img/example_of_segmentation.png)
+
+- 페이지는 개수가 정말 많지만, 세그먼트는 운영해보면 개수가 몇개 안됨. (이론적인 비교는 앞쪽, 실질적인 비교는 이러함)
+- 그러므로 테이블에 의한 메모리 낭비는 페이징이 더 심함. 세그먼트는 좀 더 적음.
+
+- 사진은 5개의 세그먼트로 형성된 경우, 0번 세그먼트의 시작 위치 (base)와 limit(크기)가 표로 형성되어 있음.
+- 세그먼트 별로 물리 메모리에 적재되어 있을 수도 있고, 아닐 수도 있음.
+
 ### 💡 Sharing of Segments
 
 ![sharing_of_segments.png](img/sharing_of_segments.png)
 
-- 세그먼트는 운영해보면 개수가 몇개 안됨.
-- 그러므로 테이블에 의한 메모리 낭비는 페이징이 더 심함. 세그먼트는 좀 더 적음.
+- 같은 역할을 하기 때문에 공유를 하는 것
+- 세그먼트 번호가 같고, 물리적인 세그먼트 위치가 같아야 함.
+- 주소 변환 시 같은 주소로 변환됨. private segment의 경우 다른 위치에 적재되어 있음.
 
 <br>
 
 ### 💡 Segmentation with paging
+(세그멘테이션과 페이징의 혼합)
 
 ![segmentation_with_paging.png](img/segmentation_with_paging.png)
 
 - segment 하나가 여러 개의 page로 구성. 때문에 메모리에 올라갈 때 page 단위로 잘려서 올라감. segment table entry가 물리적 메모리에서 
   segment가 어디서 시작하는지 나타내는 base address가 아니라 segment를 구성하는 page의 위치를 나타내는 page table의 base address를 가지고 있음. 
-  이를 통해 segment의 크기가 각각 달라 hole이 발생하는 문제를 해결.
-- 어떤 segment를 read-only로 설정할 것인지 등등의 의미단위 작업은 segment table에서 미리 설정.
+  이를 통해 segment의 크기가 각각 달라 hole이 발생하는 문제(allocation)를 해결.
+- 어떤 segment를 read-only로 설정할 것인지 등등의 의미 단위 작업은 segment table에서 미리 설정.
+- 세그먼트 당 페이지 테이블 존재. 세그먼트 테이블의 길이를 통해 페이지 테이블의 엔트리 개수 추측 가능.
 
 1. logical address에서 s를 통해 setment table 내의 몇 번째 segment entry를 나타내는지 확인
 2. 그렇게 알게 된 segment table의 s에서 segment 내부의 page의 시작 위치인 page-table base를 확인
@@ -241,4 +254,10 @@
 4. 3번에서 이상이 없다면 offset값 d를 나눠서 page의 page-table에서 몇 번째 page entry인지 나타내는 p값과 page의 어디에서 시작되는지 나타내는 offset 값 d'를 확인
 5. 1~4번에서 얻은 값을 통해 최종적으로 논리적 주소를 물리적 메모리 주소로 변환
 
-- 이 모든 작업은 MMU라는 하드웨어와 CPU가 해줘야 하는 일. 여기서 운영체제가 하는 일은 없음. 운영체제는 IO Device에 접근할 때. 하지만 메모리 접근 시에는 하드웨어가 작업.
+- 이 모든 작업은 MMU라는 하드웨어와 CPU가 해줘야 하는 일. 
+  주소 변환에 운영체제가 필요하지 않음. 하드웨어가 하는 일. (I/O 장치에 접근할때만 운영체제가 나서서 진행함.)
+  여기서(memory management) 운영체제가 하는 일은 없음. 운영체제는 IO Device에 접근할 때. 하지만 메모리 접근 시에는 하드웨어가 작업.
+  Virtual memory 사용 시 운영체제가 중요한 역할을 함.
+  
+
+
