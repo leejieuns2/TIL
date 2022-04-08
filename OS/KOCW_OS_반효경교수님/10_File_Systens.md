@@ -60,3 +60,37 @@
         - Open file table에 대한 위치 정보 (프로세스 별)
   
 ![open2.png](img/open2.png)
+
+<br>
+
+## 💡 File Protection
+
+![file_protection.png](img/file_protection.png)
+
+- Access Control 방법
+    1. Access control Matrix (행렬)
+    2. Grouping
+       - 일반적으로 grouping을 많이 사용함.
+    3. Password
+
+<br>
+
+## 💡 File System의 Mounting
+
+![mounting.png](img/mounting.png)
+
+![mounting2.png](img/mounting2.png)
+
+- 마운트를 하게 되면 또 다른 파일 시스템의 root를 연결할 수 있음.
+- 디스크에 또 다른 디스크를 연결하는 것.
+
+<br>
+
+## 💡 Access Methods
+- 시스템이 제공하는 파일 정보의 접근 방식
+    - 순차 접근 (sequential access)
+        - 카세트 테이프를 사용하는 방식처럼 접근
+        - 읽거나쓰면 offset은 자동적으로 증가
+    - 직접 접근 (direct access, random access)
+        - LP 레코드 판과 같이 접근하도록 함
+        - 파일을 구성하 레코드를 임의의 순서로 접근할 수 있음.
