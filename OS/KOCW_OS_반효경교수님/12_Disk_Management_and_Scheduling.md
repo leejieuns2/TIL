@@ -1,4 +1,4 @@
-# Chapter 11. File System Implementations
+# Chapter 12. Disk Management and Scheduling
 
 <br>
 
