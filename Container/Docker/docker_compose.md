@@ -243,6 +243,7 @@
     19e014ef7475   bridge                        bridge    local
     c6c78f97b7fb   com_folder_wordpress000net1   bridge    local
     94cf1f2451f9   host                          host      local
+    28a2d696c023   none               null      local
 
   $ docker volume ls
     DRIVER    VOLUME NAME
