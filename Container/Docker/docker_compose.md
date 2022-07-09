@@ -240,10 +240,10 @@
 
   $ docker network ls
     NETWORK ID     NAME                          DRIVER    SCOPE
-    19e014ef7475   bridge                        bridge    local
+    19e014ef7475   bridge                        bridge    local # pre_defined network 
     c6c78f97b7fb   com_folder_wordpress000net1   bridge    local
-    94cf1f2451f9   host                          host      local
-    28a2d696c023   none               null      local
+    94cf1f2451f9   host                          host      local # pre_defined network 
+    28a2d696c023   none                          null      local # pre_defined network 
 
   $ docker volume ls
     DRIVER    VOLUME NAME
