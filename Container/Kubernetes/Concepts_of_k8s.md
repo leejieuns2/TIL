@@ -120,13 +120,12 @@
 
 ### 3. 매니페스트 파일 작성 실습
 1. Deployment manifest file example
+
 ![apa000dep.png](image/apa000dep.png)
    
-2. Pod manifest file example
-![apa000ser.png](image/apa000ser.png)
-   
-3. Service manifest file example
+2. Service manifest file example
 
+![apa000ser.png](image/apa000ser.png)
 
 <br>
 
