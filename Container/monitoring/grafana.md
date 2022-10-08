@@ -97,7 +97,7 @@ grafana-86b96cd9c6-z8v59                         1/1     Running   0          85
 [root@m-k8s 6.5.1]# mkdir /webhook
 [root@m-k8s 6.5.1]# cp alert-notifier.yaml /webhook
 
-[root@m-k8s 6.5.1]# sed -i \ 's,Slack-URL, https://hooks.slack.com/services/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,g' /webhook/alert-notifier.yaml
+[root@m-k8s 6.5.1]# sed -i \ 's,Slack-URL, API-URL,g' /webhook/alert-notifier.yaml
 
 [root@m-k8s 6.5.1]# cat /webhook/alert-notifier.yaml
 apiVersion: v1
@@ -118,7 +118,7 @@ metadata:
 data:
   alertmanager.yml: |
     global:
-      slack_api_url:  https://hooks.slack.com/services/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
+      slack_api_url:  API_URL
     receivers:
     - name: slack-notifier
       slack_configs:
@@ -164,37 +164,7 @@ TEST SUITE: None
 NOTES:
 The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
 prometheus-server.default.svc.cluster.local
-
-
-Get the Prometheus server URL by running these commands in the same shell:
-NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status of by running 'kubectl get svc --namespace default -w prometheus-server'
-
-export SERVICE_IP=$(kubectl get svc --namespace default prometheus-server -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-echo http://$SERVICE_IP:80
-
-
-The Prometheus alertmanager can be accessed via port 80 on the following DNS name from within your cluster:
-prometheus-alertmanager.default.svc.cluster.local
-
-
-Get the Alertmanager URL by running these commands in the same shell:
-NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status of by running 'kubectl get svc --namespace default -w prometheus-alertmanager'
-
-export SERVICE_IP=$(kubectl get svc --namespace default prometheus-alertmanager -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-echo http://$SERVICE_IP:80
-#################################################################################
-######   WARNING: Pod Security Policy has been moved to a global property.  #####
-######            use .Values.podSecurityPolicy.enabled with pod-based      #####
-######            annotations                                               #####
-######            (e.g. .Values.nodeExporter.podSecurityPolicy.annotations) #####
-#################################################################################
-
-
-
-For more information on running Prometheus, visit:
-https://prometheus.io/
+...
 
 ## 설치 확인
 [root@m-k8s 6.5.1]# kubectl get service prometheus-alertmanager
