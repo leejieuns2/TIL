@@ -141,8 +141,6 @@ prometheus-server               LoadBalancer   10.105.177.84    192.168.1.12   8
 ## 📍 cAdvisor로 메트릭 수집하고 확인하기
 ### nginx deployment 배포 후 수집했을 때
 ![img_1.png](image/cAdvisor_capture.png)
-### nginx deployment 삭제 후 수집했을 때
-<br>
 
 ## 📍 [실습] 익스포터로 메트릭 수집하고 확인하기
 1. 사전 준비 작업
