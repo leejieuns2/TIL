@@ -189,22 +189,12 @@ deployment.apps/nginx configured
 <br>
 
 ## 📍 PromQL로 메트릭 데이터 추출하기
-<br>
 ### rate 함수로 변화율 확인하기
-- rate(node_cpu_seconds_total{mode="idle",kubernetes_node="w2-k8s"}[5m])
-![img.png](img.png)
-- graph로 확인하기
-![img_1.png](img_1.png)
+  - rate(node_cpu_seconds_total{mode="idle",kubernetes_node="w2-k8s"}[5m])
+![prometheus_rate.png](image/prometheus_rate.png)
 
-
-## 📍
-<br>
-
-## 📍
-<br>
-
-## 📍
-<br>
+### graph로 확인하기
+![prometheus_rate_graph.png](image/prometheus_rate_graph.png)
 
 ### 💎 Reference
 - [https://minglebros.github.io/kubernetes/kubernetes-prometheus/](https://minglebros.github.io/kubernetes/kubernetes-prometheus/)
